@@ -361,9 +361,20 @@ def create_mcq_length_least(rows):
     return outputs
 
 
-def create_composition_dataset(syllables_df, num_samples, mode='mcq', random_seed=100):
+def create_composition_dataset(syllables_df, num_samples, mode='mcq', random_seed=100, freq_weight=0.0):
     random.seed(random_seed)
     int2label = {0: "A", 1: "B", 2: "C", 3: "D"}
+
+    if freq_weight > 0:
+        from .sampling import load_frequency_data, add_frequency_ranks, sample_by_frequency
+        freq_df = load_frequency_data()
+        syllables_df = add_frequency_ranks(syllables_df, freq_df)
+        syllables_df = sample_by_frequency(
+            syllables_df,
+            n_samples=len(syllables_df),
+            freq_weight=freq_weight,
+            random_state=random_seed
+        )
 
     dataset = pd.DataFrame(columns=["category", "subcategory", "prompts", "label"])
 
