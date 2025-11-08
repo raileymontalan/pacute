@@ -1,0 +1,100 @@
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"kahibaybayan\".","text_tl":"Baybayin ang salitang \"kahibaybayan\"."}],"label":"k a h i b a y b a y a n"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"Makabosog\".","text_tl":"Baybayin ang salitang \"Makabosog\"."}],"label":"M a k a b o s o g"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"liing\".","text_tl":"Baybayin ang salitang \"liing\"."}],"label":"l i i n g"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"igba\".","text_tl":"Baybayin ang salitang \"igba\"."}],"label":"i g b a"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"alindog\".","text_tl":"Baybayin ang salitang \"alindog\"."}],"label":"a l i n d o g"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"katalangasan\".","text_tl":"Baybayin ang salitang \"katalangasan\"."}],"label":"k a t a l a n g a s a n"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"salwa\".","text_tl":"Baybayin ang salitang \"salwa\"."}],"label":"s a l w a"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"daya\".","text_tl":"Baybayin ang salitang \"daya\"."}],"label":"d a y a"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"dalangurong\".","text_tl":"Baybayin ang salitang \"dalangurong\"."}],"label":"d a l a n g u r o n g"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"manggasinoro\".","text_tl":"Baybayin ang salitang \"manggasinoro\"."}],"label":"m a n g g a s i n o r o"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"sana\".","text_tl":"Baybayin ang salitang \"sana\"."}],"label":"s a n a"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"bagtol\".","text_tl":"Baybayin ang salitang \"bagtol\"."}],"label":"b a g t o l"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"tinaon\".","text_tl":"Baybayin ang salitang \"tinaon\"."}],"label":"t i n a o n"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"pingkaw\".","text_tl":"Baybayin ang salitang \"pingkaw\"."}],"label":"p i n g k a w"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"tublis\".","text_tl":"Baybayin ang salitang \"tublis\"."}],"label":"t u b l i s"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"bakal\".","text_tl":"Baybayin ang salitang \"bakal\"."}],"label":"b a k a l"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"bamuak\".","text_tl":"Baybayin ang salitang \"bamuak\"."}],"label":"b a m u a k"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"alam\".","text_tl":"Baybayin ang salitang \"alam\"."}],"label":"a l a m"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"yasang\".","text_tl":"Baybayin ang salitang \"yasang\"."}],"label":"y a s a n g"}
+{"category":"composition","subcategory":"spelling","prompts":[{"text_en":"Spell out the word \"bitalok\".","text_tl":"Baybayin ang salitang \"bitalok\"."}],"label":"b i t a l o k"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"g\"s are in \"Tagaluro\"?","text_tl":"Ilang \"g\" ang mayroon sa \"Tagaluro\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"t\"s are in \"patani\"?","text_tl":"Ilang \"t\" ang mayroon sa \"patani\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"a\"s are in \"goyoran\"?","text_tl":"Ilang \"a\" ang mayroon sa \"goyoran\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"n\"s are in \"bugtungan\"?","text_tl":"Ilang \"n\" ang mayroon sa \"bugtungan\"."}],"label":"2"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"i\"s are in \"tuwali\"?","text_tl":"Ilang \"i\" ang mayroon sa \"tuwali\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"n\"s are in \"sayapong\"?","text_tl":"Ilang \"n\" ang mayroon sa \"sayapong\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"t\"s are in \"puwit\"?","text_tl":"Ilang \"t\" ang mayroon sa \"puwit\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"i\"s are in \"hinain\"?","text_tl":"Ilang \"i\" ang mayroon sa \"hinain\"."}],"label":"2"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"b\"s are in \"banlos\"?","text_tl":"Ilang \"b\" ang mayroon sa \"banlos\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"s\"s are in \"sarsalida\"?","text_tl":"Ilang \"s\" ang mayroon sa \"sarsalida\"."}],"label":"2"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"y\"s are in \"tabyo\"?","text_tl":"Ilang \"y\" ang mayroon sa \"tabyo\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"s\"s are in \"diyaski\"?","text_tl":"Ilang \"s\" ang mayroon sa \"diyaski\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"i\"s are in \"tarik\"?","text_tl":"Ilang \"i\" ang mayroon sa \"tarik\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"l\"s are in \"galigid\"?","text_tl":"Ilang \"l\" ang mayroon sa \"galigid\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"a\"s are in \"bugang\"?","text_tl":"Ilang \"a\" ang mayroon sa \"bugang\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"g\"s are in \"dagit\"?","text_tl":"Ilang \"g\" ang mayroon sa \"dagit\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"u\"s are in \"unor\"?","text_tl":"Ilang \"u\" ang mayroon sa \"unor\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"m\"s are in \"ampiyas\"?","text_tl":"Ilang \"m\" ang mayroon sa \"ampiyas\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"s\"s are in \"sunod\"?","text_tl":"Ilang \"s\" ang mayroon sa \"sunod\"."}],"label":"1"}
+{"category":"composition","subcategory":"character","prompts":[{"text_en":"How many \"d\"s are in \"dugyot\"?","text_tl":"Ilang \"d\" ang mayroon sa \"dugyot\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"ampiláw\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"ampiláw\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"sandakáti\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"sandakáti\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"tiyáw\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"tiyáw\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"lúngad\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"lúngad\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"pitlág\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"pitlág\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"alusithâ\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"alusithâ\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"tapiyók\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"tapiyók\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"pinoló\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"pinoló\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"tiyán\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"tiyán\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"turò\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"turò\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"tigám\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"tigám\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"paldás\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"paldás\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"kokómo\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"kokómo\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"parális\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"parális\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"bulsíko\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"bulsíko\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"lampúyan\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"lampúyan\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"bagasbás\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"bagasbás\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"ipóy\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"ipóy\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"soryáng\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"soryáng\"."}],"label":"1"}
+{"category":"composition","subcategory":"diacritic","prompts":[{"text_en":"How many diacritics are in \"umóm\"?","text_tl":"Ilang titik ang mayroong tuldik sa \"umóm\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Isulan\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Isulan\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Batangan\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Batangan\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Amamanhig\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Amamanhig\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Marikina\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Marikina\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Ayun\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Ayun\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Hali\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Hali\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Kapampangan\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Kapampangan\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Putris\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Putris\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Naman\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Naman\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Balaga\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Balaga\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Kabisay-an\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Kabisay-an\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Abaknon\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Abaknon\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Inabaknon\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Inabaknon\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Bugkalot\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Bugkalot\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Kiyangan\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Kiyangan\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Bikol\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Bikol\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Bira-an\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Bira-an\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Malaweg\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Malaweg\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Lapuyan\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Lapuyan\"."}],"label":"1"}
+{"category":"composition","subcategory":"uppercase","prompts":[{"text_en":"How many uppercase characters are in \"Itneg\"?","text_tl":"Ilang malaking titik ang mayroon sa \"Itneg\"."}],"label":"1"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"uklot\"?","text_tl":"Ilan ang titik sa \"uklot\"?"}],"label":"5"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"batyawan\"?","text_tl":"Ilan ang titik sa \"batyawan\"?"}],"label":"8"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"aynat\"?","text_tl":"Ilan ang titik sa \"aynat\"?"}],"label":"5"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"sagano\"?","text_tl":"Ilan ang titik sa \"sagano\"?"}],"label":"6"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"akyat\"?","text_tl":"Ilan ang titik sa \"akyat\"?"}],"label":"5"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"bunak\"?","text_tl":"Ilan ang titik sa \"bunak\"?"}],"label":"5"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"lahar\"?","text_tl":"Ilan ang titik sa \"lahar\"?"}],"label":"5"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"panglot\"?","text_tl":"Ilan ang titik sa \"panglot\"?"}],"label":"7"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"nalagalep\"?","text_tl":"Ilan ang titik sa \"nalagalep\"?"}],"label":"9"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"supak\"?","text_tl":"Ilan ang titik sa \"supak\"?"}],"label":"5"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"siyano\"?","text_tl":"Ilan ang titik sa \"siyano\"?"}],"label":"6"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"Pulano\"?","text_tl":"Ilan ang titik sa \"Pulano\"?"}],"label":"6"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"hampang\"?","text_tl":"Ilan ang titik sa \"hampang\"?"}],"label":"7"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"hawas\"?","text_tl":"Ilan ang titik sa \"hawas\"?"}],"label":"5"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"aliwayway\"?","text_tl":"Ilan ang titik sa \"aliwayway\"?"}],"label":"9"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"agkay\"?","text_tl":"Ilan ang titik sa \"agkay\"?"}],"label":"5"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"makasal\"?","text_tl":"Ilan ang titik sa \"makasal\"?"}],"label":"7"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"kilo\"?","text_tl":"Ilan ang titik sa \"kilo\"?"}],"label":"4"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"ankan\"?","text_tl":"Ilan ang titik sa \"ankan\"?"}],"label":"5"}
+{"category":"composition","subcategory":"length","prompts":[{"text_en":"How many characters are in the \"kalibkib\"?","text_tl":"Ilan ang titik sa \"kalibkib\"?"}],"label":"8"}
