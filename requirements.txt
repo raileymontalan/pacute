@@ -1,3 +1,4 @@
 ipykernel
 jupyter
 pandas
+python-Levenshtein
