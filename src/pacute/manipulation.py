@@ -1,43 +1,30 @@
+"""
+String Manipulation Dataset Generation Module
+
+This module provides functionality for creating linguistic datasets focused on
+Filipino string manipulation tasks, including character operations (insertion,
+deletion, substitution, permutation, duplication) and case transformations.
+Supports both multiple-choice questions (MCQ) and generative (GEN) formats.
+"""
+
 import random
+from typing import Dict, List, Any, Optional, Tuple, Callable
 import pandas as pd
 from .string_operations import (
     string_to_chars, chars_to_string, get_random_char,
     delete_char, insert_char, substitute_char, permute_char, duplicate_char,
     normalize_diacritic, diacritize, randomly_diacritize, same_string
 )
+from .constants import (
+    MCQ_LABEL_MAP,
+    NUM_MCQ_OPTIONS,
+    NUM_INCORRECT_OPTIONS,
+    MIN_WORD_LENGTH_MANIPULATION
+)
+from .utils import prepare_mcq_outputs, prepare_gen_outputs
 
-
-def prepare_mcq_outputs(text_en, text_tl, mcq_options, row=None, kwargs=None):
-    if row is None:
-        row = {}
-    if kwargs is None:
-        kwargs = {}
-    outputs = {
-        "prompts": [{
-            "text_en": text_en.format(**row, **kwargs),
-            "text_tl": text_tl.format(**row, **kwargs),
-            "mcq_options": mcq_options,
-        }],
-    }
-    return outputs
-
-
-def prepare_gen_outputs(text_en, text_tl, label, row=None, kwargs=None):
-    if row is None:
-        row = {}
-    if kwargs is None:
-        kwargs = {}
-    outputs = {
-        "prompts": [{
-            "text_en": text_en.format(**row, **kwargs),
-            "text_tl": text_tl.format(**row, **kwargs),
-        }],
-        "label": label
-    }
-    return outputs
-
-
-manipulations = {
+# Manipulation function mappings
+MANIPULATIONS: Dict[str, Callable] = {
     "none": same_string,
     "deletion": delete_char,
     "insertion": insert_char,
@@ -47,11 +34,45 @@ manipulations = {
 }
 
 
-def get_invalid_manipulations(target_manipulation="insertion"):
-    return [(name, func) for name, func in manipulations.items() if name != target_manipulation]
+# ============================================================================
+# Manipulation Helper Functions
+# ============================================================================
+
+def get_invalid_manipulations(target_manipulation: str = "insertion") -> List[Tuple[str, Callable]]:
+    """
+    Get all manipulation functions except the target one.
+    
+    Used to create plausible incorrect options by applying different
+    manipulation operations.
+    
+    Args:
+        target_manipulation: The manipulation to exclude (default: "insertion")
+    
+    Returns:
+        List of tuples containing (manipulation_name, manipulation_function)
+    """
+    return [(name, func) for name, func in MANIPULATIONS.items() if name != target_manipulation]
 
 
-def apply_manipulation_incorrectly(string, target_manipulation="deletion", kwargs=None):
+def apply_manipulation_incorrectly(
+    string: str,
+    target_manipulation: str = "deletion",
+    kwargs: Optional[Dict[str, Any]] = None
+) -> str:
+    """
+    Apply the target manipulation incorrectly to create plausible distractors.
+    
+    This function applies the correct manipulation type but with wrong parameters
+    (e.g., deleting the wrong character) to create believable incorrect options.
+    
+    Args:
+        string: Input string to manipulate
+        target_manipulation: Type of manipulation to apply incorrectly
+        kwargs: Parameters for the manipulation (contains the correct parameters)
+    
+    Returns:
+        String with the manipulation applied incorrectly
+    """
     if kwargs is None:
         kwargs = {}
 
@@ -91,7 +112,26 @@ def apply_manipulation_incorrectly(string, target_manipulation="deletion", kwarg
         return duplicate_char(string, char_to_duplicate=incorrect_char_to_duplicate)
 
 
-def manipulate_string(string, target_manipulation="deletion", kwargs=None):
+def manipulate_string(
+    string: str,
+    target_manipulation: str = "deletion",
+    kwargs: Optional[Dict[str, Any]] = None
+) -> List[str]:
+    """
+    Create incorrect manipulation options for MCQ questions.
+    
+    Generates three incorrect options:
+    - Two from applying different manipulation types
+    - One from applying the correct type incorrectly
+    
+    Args:
+        string: Input string to manipulate
+        target_manipulation: The correct manipulation type
+        kwargs: Parameters for the correct manipulation
+    
+    Returns:
+        List of three incorrectly manipulated strings
+    """
     if kwargs is None:
         kwargs = {}
 
@@ -99,26 +139,60 @@ def manipulate_string(string, target_manipulation="deletion", kwargs=None):
     chosen_functions = random.sample([func for name, func in manipulation_functions], 2)
     results = [func(string) for func in chosen_functions]
 
-    incorrect_application = apply_manipulation_incorrectly(string, target_manipulation=target_manipulation, kwargs=kwargs)
+    incorrect_application = apply_manipulation_incorrectly(
+        string, 
+        target_manipulation=target_manipulation, 
+        kwargs=kwargs
+    )
     results.append(incorrect_application)
     return results
 
 
-def diacritize_string(string, correct_string):
+def diacritize_string(string: str, correct_string: str) -> List[str]:
+    """
+    Create incorrect diacritic options for MCQ questions.
+    
+    Generates three plausible incorrect options for diacritic normalization:
+    - Original string (no normalization)
+    - String with added diacritics
+    - String with random diacritics
+    
+    Args:
+        string: Input string
+        correct_string: The correctly normalized string
+    
+    Returns:
+        List of three incorrect diacritization options
+    """
     results = [
         same_string(string),
         diacritize(string),
         randomly_diacritize(string),
     ]
 
+    # If correct answer accidentally included, replace it
     if correct_string in results:
         results.remove(correct_string)
         from .string_operations import shuffle_chars
         results.append(chars_to_string(shuffle_chars(string_to_chars(correct_string))))
+    
     return results
 
 
-def create_mcq_deletion(row):
+# ============================================================================
+# MCQ Question Creation Functions
+# ============================================================================
+
+def create_mcq_deletion(row: pd.Series) -> Dict[str, Any]:
+    """
+    Create MCQ for character deletion operation.
+    
+    Args:
+        row: DataFrame row containing word data
+    
+    Returns:
+        Dictionary containing formatted MCQ prompts and options
+    """
     text_en = 'Which option correctly removes every "{char_to_delete}" in "{normalized_word}"?'
     text_tl = 'Alin sa sumusunod ang nagtatanggal ng bawat "{char_to_delete}" sa "{normalized_word}"?'
 
@@ -135,8 +209,7 @@ def create_mcq_deletion(row):
         "incorrect3": mcq_incorrect[2],
     }
 
-    outputs = prepare_mcq_outputs(text_en, text_tl, mcq_options, row=row, kwargs=kwargs)
-    return outputs
+    return prepare_mcq_outputs(text_en, text_tl, mcq_options, row=row, kwargs=kwargs)
 
 
 def create_mcq_insertion(row):
@@ -282,7 +355,20 @@ def create_mcq_diacritic_normalization(row):
     return outputs
 
 
-def create_gen_deletion(row):
+# ============================================================================
+# Generative Question Creation Functions
+# ============================================================================
+
+def create_gen_deletion(row: pd.Series) -> Dict[str, Any]:
+    """
+    Create generative question for character deletion operation.
+    
+    Args:
+        row: DataFrame row containing word data
+    
+    Returns:
+        Dictionary containing formatted generative prompts and label
+    """
     text_en = 'Remove every "{char_to_delete}" in "{normalized_word}".'
     text_tl = 'Tanggalin ang bawat "{char_to_delete}" sa "{normalized_word}".'
 
@@ -291,8 +377,7 @@ def create_gen_deletion(row):
     kwargs = {"char_to_delete": char_to_delete}
     label = delete_char(string, **kwargs)
 
-    outputs = prepare_gen_outputs(text_en, text_tl, str(label), row=row, kwargs=kwargs)
-    return outputs
+    return prepare_gen_outputs(text_en, text_tl, str(label), row=row, kwargs=kwargs)
 
 
 def create_gen_insertion(row):
@@ -379,22 +464,135 @@ def create_gen_diacritic_normalization(row):
     return outputs
 
 
-def create_manipulation_dataset(syllables_df, num_samples, mode='mcq', random_seed=100, freq_weight=0.0):
-    random.seed(random_seed)
-    int2label = {0: "A", 1: "B", 2: "C", 3: "D"}
+# ============================================================================
+# Helper Functions for Dataset Creation
+# ============================================================================
 
-    if freq_weight > 0:
-        from .sampling import load_frequency_data, add_frequency_ranks, sample_by_frequency
-        freq_df = load_frequency_data()
-        syllables_df = add_frequency_ranks(syllables_df, freq_df)
-        syllables_df = sample_by_frequency(
-            syllables_df,
-            n_samples=len(syllables_df),
-            freq_weight=freq_weight,
-            random_state=random_seed
-        )
+def _shuffle_mcq_options(dataset: pd.DataFrame, random_seed: int = 100) -> pd.DataFrame:
+    """
+    Shuffle MCQ options and assign labels to the dataset.
+    
+    Args:
+        dataset: DataFrame containing MCQ questions with mcq_options
+        random_seed: Random seed for reproducibility
+    
+    Returns:
+        Modified dataset with shuffled choices and assigned labels
+    """
+    random.seed(random_seed)
+    
+    for i in range(len(dataset)):
+        label_index = i % NUM_MCQ_OPTIONS
+        correct = dataset.iloc[i]['prompts'][0]["mcq_options"]['correct']
+        options = [
+            dataset.iloc[i]['prompts'][0]["mcq_options"]['incorrect1'],
+            dataset.iloc[i]['prompts'][0]["mcq_options"]['incorrect2'],
+            dataset.iloc[i]['prompts'][0]["mcq_options"]['incorrect3'],
+        ]
+        random.shuffle(options)
+        options.insert(label_index, correct)
+        choices = {
+            "choice1": options[0],
+            "choice2": options[1],
+            "choice3": options[2],
+            "choice4": options[3],
+        }
+        label = MCQ_LABEL_MAP[label_index]
+        dataset.at[i, 'prompts'][0].update(choices)
+        dataset.at[i, 'label'] = label
+    
+    return dataset
+
+
+def _filter_by_word_length(syllables_df: pd.DataFrame, min_length: int) -> pd.DataFrame:
+    """
+    Filter syllables DataFrame to only include words of sufficient length.
+    
+    Args:
+        syllables_df: Input DataFrame containing syllable/word data
+        min_length: Minimum word length (inclusive)
+    
+    Returns:
+        Filtered DataFrame containing only words with length >= min_length
+    """
+    return syllables_df[syllables_df['normalized_word'].str.len() >= min_length].reset_index(drop=True)
+
+
+def _apply_frequency_weighting(syllables_df: pd.DataFrame, freq_weight: float, random_seed: int) -> pd.DataFrame:
+    """
+    Apply frequency-based sampling to the syllables dataframe.
+    
+    Args:
+        syllables_df: Input DataFrame containing syllable/word data
+        freq_weight: Weight for frequency-based sampling (0.0 to 1.0)
+        random_seed: Random seed for reproducibility
+    
+    Returns:
+        DataFrame with frequency rankings and sampling applied
+    """
+    from .sampling import load_frequency_data, add_frequency_ranks, sample_by_frequency
+    freq_df = load_frequency_data()
+    syllables_df = add_frequency_ranks(syllables_df, freq_df)
+    syllables_df = sample_by_frequency(
+        syllables_df,
+        n_samples=len(syllables_df),
+        freq_weight=freq_weight,
+        random_state=random_seed
+    )
+    return syllables_df
+
+
+# ============================================================================
+# Main Dataset Creation Function
+# ============================================================================
+
+def create_manipulation_dataset(
+    syllables_df: pd.DataFrame,
+    num_samples: int,
+    mode: str = 'mcq',
+    random_seed: int = 100,
+    freq_weight: float = 0.0
+) -> pd.DataFrame:
+    """
+    Create a complete string manipulation dataset with various transformation tasks.
+    
+    This function generates a comprehensive dataset for testing Filipino string
+    manipulation skills. It creates multiple types of tasks including:
+    - Character operations: insertion, deletion, substitution, permutation, duplication
+    - Case transformations: uppercasing, lowercasing
+    - Diacritic operations: normalization (removal of diacritics)
+    
+    Args:
+        syllables_df: DataFrame containing syllable/word data with columns:
+            - word: The original word (may contain diacritics/uppercase)
+            - normalized_word: Normalized version of the word
+        num_samples: Number of samples to generate per task type
+        mode: Question format - 'mcq' for multiple-choice or 'gen' for generative (default: 'mcq')
+        random_seed: Random seed for reproducibility (default: 100)
+        freq_weight: Weight for frequency-based sampling, 0.0 to 1.0 (default: 0.0)
+            Higher values prioritize more common words
+    
+    Returns:
+        DataFrame with columns:
+            - category: Task category (always "manipulation")
+            - subcategory: Specific task type (insertion, deletion, etc.)
+            - prompts: List containing question prompts in English and Filipino
+            - label: Correct answer (A/B/C/D for MCQ, actual answer for GEN)
+    
+    Raises:
+        ValueError: If mode is not 'mcq' or 'gen'
+    
+    Examples:
+        >>> syllables = pd.read_json("syllables.jsonl", lines=True)
+        >>> mcq_dataset = create_manipulation_dataset(syllables, num_samples=100, mode='mcq')
+        >>> gen_dataset = create_manipulation_dataset(syllables, num_samples=100, mode='gen')
+    """
+    random.seed(random_seed)
 
     dataset = pd.DataFrame(columns=["category", "subcategory", "prompts", "label"])
+    
+    # Filter for words of sufficient length (manipulation needs longer words)
+    syllables_df = _filter_by_word_length(syllables_df, MIN_WORD_LENGTH_MANIPULATION)
 
     if mode == 'mcq':
         tasks = {
@@ -409,7 +607,14 @@ def create_manipulation_dataset(syllables_df, num_samples, mode='mcq', random_se
         }
 
         for subcategory_name, subcategory_function in tasks.items():
-            for _, row in syllables_df.sample(num_samples).iterrows():
+            # Apply frequency weighting if requested, otherwise use uniform sampling
+            if freq_weight > 0:
+                sampled_df = _apply_frequency_weighting(syllables_df, freq_weight, random_seed)
+                sample_rows = sampled_df.head(num_samples)
+            else:
+                sample_rows = syllables_df.sample(num_samples, random_state=random_seed)
+            
+            for _, row in sample_rows.iterrows():
                 mcq_row = subcategory_function(row)
                 dataset = pd.concat([dataset, pd.DataFrame({
                     "category": ["manipulation"],
@@ -417,25 +622,8 @@ def create_manipulation_dataset(syllables_df, num_samples, mode='mcq', random_se
                     "prompts": [mcq_row["prompts"]],
                 })], ignore_index=True)
 
-        for i in range(len(dataset)):
-            label_index = i % 4
-            correct = dataset.iloc[i]['prompts'][0]["mcq_options"]['correct']
-            options = [
-                dataset.iloc[i]['prompts'][0]["mcq_options"]['incorrect1'],
-                dataset.iloc[i]['prompts'][0]["mcq_options"]['incorrect2'],
-                dataset.iloc[i]['prompts'][0]["mcq_options"]['incorrect3'],
-            ]
-            random.shuffle(options)
-            options.insert(label_index, correct)
-            choices = {
-                "choice1": options[0],
-                "choice2": options[1],
-                "choice3": options[2],
-                "choice4": options[3],
-            }
-            label = int2label[label_index]
-            dataset.at[i, 'prompts'][0].update(choices)
-            dataset.at[i, 'label'] = label
+        # Shuffle options and assign labels
+        dataset = _shuffle_mcq_options(dataset, random_seed)
 
     elif mode == 'gen':
         tasks = {
@@ -450,7 +638,14 @@ def create_manipulation_dataset(syllables_df, num_samples, mode='mcq', random_se
         }
 
         for subcategory_name, subcategory_function in tasks.items():
-            for _, row in syllables_df.sample(num_samples * 100).iterrows():
+            # Apply frequency weighting if requested, otherwise use uniform sampling
+            if freq_weight > 0:
+                sampled_df = _apply_frequency_weighting(syllables_df, freq_weight, random_seed)
+                sample_pool = sampled_df.head(num_samples * 100)
+            else:
+                sample_pool = syllables_df.sample(num_samples * 100, random_state=random_seed)
+            
+            for _, row in sample_pool.iterrows():
                 if len(dataset[dataset['subcategory'] == subcategory_name]) >= num_samples:
                     break
 
@@ -469,5 +664,8 @@ def create_manipulation_dataset(syllables_df, num_samples, mode='mcq', random_se
                     "prompts": [gen_row["prompts"]],
                     "label": [gen_row["label"]],
                 })], ignore_index=True)
+    
+    else:
+        raise ValueError(f"Invalid mode: {mode}. Choose 'mcq' or 'gen'.")
 
     return dataset
