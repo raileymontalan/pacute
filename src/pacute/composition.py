@@ -8,94 +8,21 @@ questions (MCQ) and generative (GEN) formats.
 """
 
 import random
-from typing import Dict, List, Any, Optional, Set
+from typing import Dict, List, Any, Optional
 import pandas as pd
 from .string_operations import (
     string_to_chars, chars_to_string, spell_string, perturb_string, get_random_char
 )
-
-
-# Constants
-MCQ_LABEL_MAP = {0: "A", 1: "B", 2: "C", 3: "D"}
-NUM_MCQ_OPTIONS = 4
-NUM_INCORRECT_OPTIONS = 3
-
-# Minimum word lengths for different task types
-MIN_WORD_LENGTH_COMPOSITION = 3  # Minimum length for composition tasks
-
-DIACRITICS: Set[str] = set("ÀÁÂÈÉÊÌÍÎÒÓÔÙÚÛàáâèéêìíîòóôùúûÑñ")
-UPPERCASE_LETTERS: Set[str] = set("ABCDEFGHIJKLMNÑOPQRSTUVWXYZ")
-UPPERCASE_DIACRITICS: Set[str] = set("ÀÁÂÈÉÊÌÍÎÒÓÔÙÚÛ")
-
-
-def prepare_mcq_outputs(
-    text_en: str,
-    text_tl: str,
-    mcq_options: Dict[str, str],
-    row: Optional[Dict[str, Any]] = None,
-    kwargs: Optional[Dict[str, Any]] = None
-) -> Dict[str, Any]:
-    """
-    Prepare formatted output for multiple-choice questions.
-    
-    Args:
-        text_en: English question text with format placeholders
-        text_tl: Tagalog/Filipino question text with format placeholders
-        mcq_options: Dictionary containing correct and incorrect options
-        row: Optional row data for formatting (default: empty dict)
-        kwargs: Optional additional keyword arguments for formatting (default: empty dict)
-    
-    Returns:
-        Dictionary containing formatted prompts with bilingual text and MCQ options
-    """
-    if row is None:
-        row = {}
-    if kwargs is None:
-        kwargs = {}
-    
-    outputs = {
-        "prompts": [{
-            "text_en": text_en.format(**row, **kwargs),
-            "text_tl": text_tl.format(**row, **kwargs),
-            "mcq_options": mcq_options,
-        }],
-    }
-    return outputs
-
-
-def prepare_gen_outputs(
-    text_en: str,
-    text_tl: str,
-    label: str,
-    row: Optional[Dict[str, Any]] = None,
-    kwargs: Optional[Dict[str, Any]] = None
-) -> Dict[str, Any]:
-    """
-    Prepare formatted output for generative questions.
-    
-    Args:
-        text_en: English question text with format placeholders
-        text_tl: Tagalog/Filipino question text with format placeholders
-        label: The correct answer/label for the question
-        row: Optional row data for formatting (default: empty dict)
-        kwargs: Optional additional keyword arguments for formatting (default: empty dict)
-    
-    Returns:
-        Dictionary containing formatted prompts with bilingual text and the correct label
-    """
-    if row is None:
-        row = {}
-    if kwargs is None:
-        kwargs = {}
-    
-    outputs = {
-        "prompts": [{
-            "text_en": text_en.format(**row, **kwargs),
-            "text_tl": text_tl.format(**row, **kwargs),
-        }],
-        "label": label
-    }
-    return outputs
+from .constants import (
+    MCQ_LABEL_MAP,
+    NUM_MCQ_OPTIONS,
+    NUM_INCORRECT_OPTIONS,
+    MIN_WORD_LENGTH_COMPOSITION,
+    DIACRITICS,
+    UPPERCASE_LETTERS,
+    UPPERCASE_DIACRITICS
+)
+from .utils import prepare_mcq_outputs, prepare_gen_outputs
 
 
 # ============================================================================
